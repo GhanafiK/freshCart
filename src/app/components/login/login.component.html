@@ -1,0 +1,66 @@
+<section class="bg-main-light p-2 my-5 rounded-4 text-main login ">
+  <h1 class="h2 text-center login-text">Login</h1>
+  <form [formGroup]="loginform" (ngSubmit)="onsubmit()">
+    <div class="my-2">
+      <label for="email">email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="
+      {
+        'is-valid':!loginform.get('email')?.errors&&(loginform.get('email')?.touched||loginform.get('email')?.dirty),
+        'is-invalid':errMsg||(loginform.get('email')?.errors&&(loginform.get('email')?.touched||loginform.get('email')?.dirty))
+      }
+      ">
+      
+      @if(loginform.get('email')?.errors&&(loginform.get('email')?.touched||loginform.get('email')?.dirty)){
+        <div class="w-100 alert alert-danger p-1 text-center mt-2 mb-0 small fw-bolder">
+          @if (loginform.get('email')?.getError('required')) {
+            <p class="m-0">email is required.</p>
+          }
+          @else if (loginform.get('email')?.getError('email')) {
+            <p class="m-0">Please enter a valid email address</p>
+          }
+        </div>
+      }
+
+    </div>
+    <div class="my-2">
+      <label for="password">password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="
+      {
+        'is-valid':!loginform.get('password')?.errors&&(loginform.get('password')?.touched||loginform.get('password')?.dirty),
+        'is-invalid':errMsg||(loginform.get('password')?.errors&&(loginform.get('password')?.touched||loginform.get('password')?.dirty))
+      }
+        
+      ">
+
+      @if (loginform.get('password')?.errors&&(loginform.get('password')?.touched||loginform.get('password')?.dirty)) {
+        <div class="w-100 alert alert-danger p-1 text-center mt-2 mb-0 small fw-bolder">
+          @if(loginform.get('password')?.getError('required')){
+            <p class="m-0">password is required.</p>
+          }@else if (loginform.get('password')?.getError('pattern')) {
+            <p class="m-0">Password must be at least 6 characters long.</p>
+          }
+        </div>
+      }
+    </div>
+    <div class="text-center mx-auto my-2">
+      <a class="forgotPass cursor-pointer text-main small" routerLink='/forgotPassword' >Forgot Your Password?</a>
+    </div>
+    @if(errMsg&&!isloading){
+      <div class="w-100 alert alert-danger p-1 text-center mt-2 mb-0 small fw-bolder">
+        {{errMsg}}
+      </div>
+    }
+
+    <button class="btn-main w-100 mb-3"  [disabled]="isloading" type="submit">
+      Login
+      @if(isloading){
+        <span><i class="fas fa-spin fa-spinner"></i></span>
+      }
+    </button>
+    <div class="for-and-reg">
+      <p class="text-main-muted small" >Don't have an account? <span class="register-navigate fs-6 fw-bolder" (click)="navigateToRegister()">Register Now</span></p>
+    </div>
+
+    
+  </form>
+</section>

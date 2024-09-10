@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Lilita+One&display=swap');
+.cart{
+  box-shadow: 0 2px 5px  #8f8f8f;
+  position: relative;
+}
+.delete-product{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.product-row{
+  border-bottom: 2px solid var(--main-color);
+}
+.login-text{
+  font-family: 'Lilita One', sans-serif;
+  font-size: 30px;
+}
+.counter{
+  background-color: #dfdfdf;
+  border-radius: 18px;
+  padding: 5px;
+}
+.payment{
+  background-color: var(--light-color);
+  box-shadow:0 2px 5px #8f8f8f ;
+}
+.shipping{
+  color: #29ce00;
+}
+.emptyImg{
+  width: 50%;
+}
+@media (min-width: 992px) { 
+  .cart{
+    margin: unset;
+  }
+  .emptyImg{
+    width: 25%;
+  }
+}

@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Lilita+One&display=swap');
+.category-text{
+  font-family: 'Lilita One', sans-serif;
+  font-size: 30px;
+}
+.category {
+  transition: all 0.5s;
+}
+
+.category:hover {
+  transform: scale(1.03);
+}
+
+.inner-shadow{
+  box-shadow: 0 1px 5px #8f8f8f;
+}

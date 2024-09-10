@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg bg-main-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="login">
+      <span class="fw-bolder logo"><i class="bi bi-cart4"></i> FreshCart</span>
+      <!-- <img src="./assets/images/freshcart-logo.svg" alt="Logo" /> -->
+      <!-- <img src="./assets/mp4-unscreen.gif" width="100px"  alt="Logo"> -->
+    </a>
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      <a class="nav-link cursor-pointer" (click)="toggleDarkMode()" #toggleBtn>
+        <i [ngClass]="
+          {
+            'bi bi-moon-stars-fill': isDarkMode,
+            'bi bi-brightness-high': !isDarkMode
+          }
+          " class="fa-solid"></i> {{theme}}
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span><i class="fa-solid fa-bars text-main"></i></span>
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item cursor-pointer">
+          <a class="nav-link ps-2" routerLinkActive="active-link" routerLink="/login"
+            >login</a
+          >
+        </li>
+        <li class="nav-item cursor-pointer">
+          <a class="nav-link ps-2" routerLinkActive="active-link" routerLink="/register"
+            >register</a
+          >
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>

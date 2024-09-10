@@ -1,0 +1,70 @@
+<section class="my-3">
+  @if(categoryArr&&categoryArr.length>0){
+  <h1 class="h2 text-center product-text text-main my-3">{{ categoryname }}</h1>
+  <div class="w-50 mx-auto my-3 search-container">
+    <input type="search" class="search w-100" placeholder="Search By Title..."  [(ngModel)]="text">
+    <span class="d-block"><i class="fa-solid fa-magnifying-glass"></i></span>
+  </div>
+  <div class="row g-4">
+    @for (product of categoryArr|search:text ; track product.id) {
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+      <div class="p-2 bg-transparent product card-text h-100 my-card">
+        @if(product.priceAfterDiscount&&product.price!==product.priceAfterDiscount){
+        <div class="sale border-0">
+          <span class="small fw-bolder"
+            >{{
+              ((product.price - product.priceAfterDiscount) / product.price) *
+                100 | intNum
+            }}% off</span
+          >
+        </div>
+        }
+        <div [routerLink]="['/details', product.id]">
+          <img [src]="product.imageCover" [alt]="product.title" class="w-100" />
+          <h2 class="small text-main mt-1">{{ product.category.name }}</h2>
+          <h3 class="h6">{{ product.title.split(" ", 2).join(" ") }}</h3>
+          <div class="d-flex justify-content-between align-items-center">
+            <span>{{ product.price }} EGP</span>
+            <div class="stars">
+              @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track
+              $index) {
+              <span><i class="bi bi-star-fill rating-color small"></i></span>
+              } @if(product.ratingsAverage%1!==0){
+              <span>
+                <i
+                  class="bi bi-star-fill rating-color small"
+                  [style.clip-path]="
+                    'inset(0 ' +
+                    (100 - (product.ratingsAverage % 1) * 100) +
+                    '% 0 0)'
+                  "
+                ></i
+              ></span>
+              }
+            </div>
+          </div>
+        </div>
+        <span class="d-block cursor-pointer my-2 heart-icon"  (click)="addToWishList(product.id)" [ngClass]="{
+          'text-danger':isProductinWish(product.id)
+        }"><i class="fa-solid fa-heart fa-xl"></i></span>
+        <button class="btn-main w-100 py-1" (click)="addToCart(product.id)">
+          + Add To Cart
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  }@else {
+  <div class="text-center">
+    <img
+      src="./assets/images/OutOfStock.png"
+      class="outOfStock"
+      alt="empty cart"
+    />
+    <h1 class="fw-bolder card-text">
+      <span class="text-main">{{ categoryname }}</span> Products are
+      <span class="text-danger">Out Of Stock Now</span>
+    </h1>
+  </div>
+  }
+</section>

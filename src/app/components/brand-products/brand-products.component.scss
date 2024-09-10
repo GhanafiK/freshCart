@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Lilita+One&display=swap');
+.product-text{
+  font-family: 'Lilita One', sans-serif;
+  font-size: 30px;
+}
+.my-card{
+  box-shadow: 0 1px 5px #8f8f8f;
+}
+.sale{
+  position: absolute;
+  padding: 6px;
+  top: 0px;
+  right: 0px;
+  background-color: #eeaf00;
+}
+.outOfStock{
+  width: 100%;
+}
+.search{
+  padding:10px;
+  border-radius: 50px;
+  background-color: transparent;
+  color: var(--card-text);
+  border: 1px solid var(--main-color);
+}
+.search-container{
+  position: relative;
+}
+
+.search-container span{
+  padding:6px 10px;
+  border-radius: 50px;
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  color: #fff;
+  background-color: var(--main-color);
+}
+::-webkit-input-placeholder {
+  color: var(--card-text);
+}
+::-moz-placeholder { 
+  color: var(--card-text);
+}
+:-ms-input-placeholder { 
+  color: var(--card-text);
+}
+:-moz-placeholder { 
+  color: var(--card-text);
+}
+.heart-icon{
+  color: #8080803d ;
+}
+
+@media (min-width: 576px){
+  .outOfStock{
+    width: 50%;
+  }
+}
+@media (min-width: 768px){
+  .outOfStock{
+    width: 25%;
+  }
+  .search-container span{
+    padding:7px 30px;
+  }
+}

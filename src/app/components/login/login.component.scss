@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Lilita+One&display=swap');
+.login{
+  box-shadow: 0 2px 10px  #8f8f8f;
+  margin: auto;
+}
+.login-text{
+  font-family: 'Lilita One', sans-serif;
+  font-size: 30px;
+}
+.forgotPass:hover{
+  text-decoration: underline;
+  color: var(--main-color) ;
+}
+.register-navigate{
+  color: green;
+  cursor: pointer;
+}
+.register-navigate:hover{
+  text-decoration: underline;
+}
+@media (min-width: 768px) {
+  .for-and-reg{
+    display: flex;
+    justify-content: space-between;
+  }
+  .login{
+    width: 50%;
+  }
+  
+}
+@media (min-width: 992px) {
+  .login{
+    width: 30%;
+  }
+
+}

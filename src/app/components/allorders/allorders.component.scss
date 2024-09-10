@@ -1,0 +1,68 @@
+.text{
+  font-family: 'Lilita One', sans-serif;
+}
+.shipment{
+  text-align: center;
+}
+.shipmentOrder{
+  border-bottom: 2px dashed gray;
+  padding-bottom:15px ;
+}
+.ship-product{
+  box-shadow: 0 2px 5px  #8f8f8f;
+}
+.product-img{
+  width: 50%;
+  margin: auto;
+}
+
+.progress{
+  display: flex;
+  justify-content: start;
+  background-color: transparent;
+}
+.items-and-price{
+  display: block;
+  width: fit-content;
+  padding: 5px 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.payment{
+  background-color: var(--light-color);
+  box-shadow:0 2px 5px #8f8f8f ;
+  margin-top: 20px;
+}
+.shipping{
+  color: #29ce00;
+}
+
+@media (min-width: 768px){
+  .shipment{
+    text-align: unset;
+  }
+  .product-img{
+    width: 100%;
+  }
+  .progress{
+    justify-content: end;
+  }
+}
+.emptyImg{
+  width: 50%;
+}
+@media (min-width: 992px) { 
+  .emptyImg{
+    width: 25%;
+  }
+}
+@media (min-width: 992px){
+  .payment{
+    margin-top: unset;
+  }
+  .shipmentOrder{
+    border-bottom:unset;
+    padding-bottom:unset ;
+  }
+}

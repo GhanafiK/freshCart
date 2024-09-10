@@ -1,0 +1,82 @@
+<section class="bg-main-light p-2 my-5 rounded-4 text-main order">
+  <h1 class="h2 text-center order-text fw-bolder">Shipping Details</h1>
+  <div class="px-3">
+    <form [formGroup]="orderForm" (ngSubmit)="onsubmit()">
+      <div class="my-2">
+        <label for="details">Details</label>
+        <textarea [ngClass]="{
+          'is-valid': !orderForm.get('details')?.errors&&(orderForm.get('details')?.touched||orderForm.get('details')?.dirty),
+          'is-invalid': orderForm.get('details')?.errors&&(orderForm.get('details')?.touched||orderForm.get('details')?.dirty)
+          }" type="text" id="details" class="form-control mt-1" formControlName="details"></textarea>
+  
+        @if(orderForm.get('details')?.errors&&(orderForm.get('details')?.touched||orderForm.get('details')?.dirty)){
+          <div class="w-100 alert alert-danger p-1 text-center mt-2 mb-0 small fw-bolder">
+            @if(orderForm.get('details')?.getError('required')){
+              <p class="m-0">details is required.</p>
+            }
+          </div>
+        }
+  
+      </div>
+      <div class="my-2">
+        <label for="phone">Your phone</label>
+        <input [ngClass]="{
+          'is-valid': !orderForm.get('phone')?.errors&&(orderForm.get('phone')?.touched||orderForm.get('phone')?.dirty),
+          'is-invalid': orderForm.get('phone')?.errors&&(orderForm.get('phone')?.touched||orderForm.get('phone')?.dirty)
+          }" type="tel" id="phone" class="form-control mt-1" formControlName="phone">
+  
+        @if(orderForm.get('phone')?.errors&&(orderForm.get('phone')?.touched||orderForm.get('phone')?.dirty)){
+          <div class="w-100 alert alert-danger p-1 text-center mt-2 mb-0 small fw-bolder">
+            @if(orderForm.get('phone')?.getError('required')){
+              <p class="m-0">phone number  is required.</p>
+            }@else if (orderForm.get('phone')?.getError('pattern')) {
+              <p class="m-0">phone number must be a valid Egyptian number.</p>
+            }
+          </div>
+        }
+  
+      </div>
+      <div class="my-2">
+        <label for="city">city</label>
+        <input [ngClass]="{
+          'is-valid': !orderForm.get('city')?.errors&&(orderForm.get('city')?.touched||orderForm.get('city')?.dirty),
+          'is-invalid': orderForm.get('city')?.errors&&(orderForm.get('city')?.touched||orderForm.get('city')?.dirty)
+          }" type="text" id="city" class="form-control mt-1" formControlName="city">
+  
+        @if(orderForm.get('city')?.errors&&(orderForm.get('city')?.touched||orderForm.get('city')?.dirty)){
+          <div class="w-100 alert alert-danger p-1 text-center mt-2 mb-0 small fw-bolder">
+            @if(orderForm.get('city')?.getError('required')){
+              <p class="m-0">city is required.</p>
+            }
+          </div>
+        }
+  
+      </div>
+
+      <div class="mt-3">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="payment" id="Cash" (change)="checkStatus('Cash on Delivery (COD)')">
+          <label class="form-check-label" for="Cash">
+            Cash on Delivery (COD)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="payment" id="Credit" checked (change)="checkStatus('Online Payment')" >
+          <label class="form-check-label" for="Credit">
+            Online Payment
+          </label>
+        </div>
+      </div>
+
+
+      <button class="btn-main w-100 my-3" [disabled]="isloading" type="submit" >
+        Check Out
+        @if(isloading){
+          <span><i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+  
+    </form>
+  </div>
+
+</section>

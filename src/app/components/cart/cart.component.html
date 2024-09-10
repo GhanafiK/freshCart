@@ -1,0 +1,73 @@
+<section class="my-3" >
+  @if(cartDetails&&cartDetails.products&&cartDetails.products.length>0){
+    <div class="row">
+      <h1 class="h2 login-text my-3 card-text fw-bolder">Your basket</h1>
+      <div class="col-lg-9 mb-5 ">
+        @for (item of cartDetails.products; track item.product.id) {
+          <div class="row rounded-4 text-main cart bg-main-light mb-3 align-items-center p-3">
+            <div class="col-4 col-md-2">
+              <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+            </div>
+            <div class="col-8 col-md-10">
+              <h3 class="border-bottom">{{item.product.title}}</h3>
+              <div class="row align-items-center">
+                <div class="col-md-4 mb-2 mb-md-0 fw-bolder">
+                  <span class="brand">Brand: {{item.product.brand.name}}</span>
+                </div>
+                
+                <div class="col-md-4 mb-2 mb-md-0 fw-bolder d-flex align-items-center">
+                    <span class="me-2">Qty: </span>
+                    <div class="counter">
+                      <span class="cursor-pointer text-danger" (click)="updateCount(item.product.id,item.count-1)"><i class="fa-solid fa-circle-minus fa-xl"></i></span>
+                      <span class="px-1 text-black">{{item.count}}</span>
+                      <span class="cursor-pointer shipping" (click)="updateCount(item.product.id,item.count+1)"><i class="fa-solid fa-circle-plus fa-xl"></i></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-2 mb-md-0 fw-bolder">
+                  <p class="m-0">Price: EGP {{item.price}}</p>
+                </div>
+                
+              </div>
+              <button class="delete-product text-danger btn border-0 p-0" (click)="removeSpecificProduct(item.product.id,item.product.title)">
+                <i class="fa-solid fa-xmark fa-xl"></i>
+              </button>
+            </div>
+            
+            
+          </div>
+          
+        }
+      </div>
+  
+      <div class="col-lg-3">
+        <div class="mb-2 payment rounded-4 card-text fw-bolder">
+          <h3 class="py-4 border-bottom text-center">Order Summary</h3>
+          <div class="py-4 border-bottom ">
+            <div class="d-flex justify-content-between px-3 my-2">
+              <span>Subtotal</span>
+              <span>EGP {{cartDetails.totalCartPrice}}</span>
+            </div>
+            <div class="d-flex justify-content-between px-3 my-2">
+              <span>Shipping</span>
+              <span class="shipping">free</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between px-3 my-2 py-3">
+            <span>Total</span>
+            <span>EGP {{cartDetails.totalCartPrice}}</span>
+          </div>
+        </div>
+  
+        <button class="btn-main w-100 rounded-4" [routerLink]="['/order',cartDetails._id]">Proceed to Buy</button>
+      </div>
+    </div>
+  }@else {
+    <div class="text-center">
+      <img src="./assets/images/emptyCart.png" class="emptyImg" alt="empty cart">
+      <h1 class="fw-bolder card-text">Your Cart is <span class="text-danger">Empty</span></h1>
+      <p class="card-text">Must add items on the cart before you proceed to check out</p>
+      <button class="btn-main rounded-4 mb-3" routerLink="/home"><i class="fa-solid fa-basket-shopping fa-bounce"></i> RETURN TO SHOP</button>
+    </div>
+  }
+</section>

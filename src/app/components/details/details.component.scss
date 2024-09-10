@@ -1,0 +1,38 @@
+.product-details{
+  box-shadow: 0 2px 10px  #8f8f8f;
+}
+.priceBefore{
+  text-decoration: line-through;
+}
+.title{
+  border-bottom:1px solid #8f8f8f;
+}
+.star{
+  border-left:4px solid #8f8f8f;
+}
+.inStock{
+  font-size: 15px;
+  margin-top:10px ;
+}
+.inStock .bi{
+  color: #c45f06;
+}
+.current-price{
+  background-color: #d77f01;
+}
+
+.saving{
+  font-size: 15px;
+  margin-block: 5px;
+}
+
+.saving .off{
+  background: rgb(223, 241, 217);
+  color: rgb(55, 174, 2);
+  margin-left: 10px;
+  padding-inline: 5px;
+}
+
+.heart-icon{
+  color: #8080803d ;
+}

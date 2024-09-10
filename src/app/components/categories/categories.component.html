@@ -1,0 +1,15 @@
+<section class="my-3 ">
+  <h1 class="h2 text-center category-text text-main my-3">Categories</h1>
+  <div class="row g-4 justify-content-center">
+    @for (category of categoriesData; track $index) {
+      <div class="col-sm-6 col-md-4 col-lg-3 cursor-pointer category" [routerLink]="['/CategoryProducts',category.name]">
+        <div class="border rounded-3 overflow-hidden inner-shadow">
+          <img [src]="category.image" height="300px" class="w-100 " [alt]="category.name">
+          <div class="card-body">
+            <h3 class="h6 text-main text-center p-4 fw-bolder">{{category.name}}</h3>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

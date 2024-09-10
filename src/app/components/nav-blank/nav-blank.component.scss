@@ -1,0 +1,29 @@
+.navbar{
+  background-color: var(--background-color);
+  color: var(--main-color);
+  transition:all 1s;
+}
+.logo{
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
+  background: linear-gradient(45deg, #00fd19, #8f39f1);
+  background-clip: text;
+  color: transparent;
+}
+.logout{
+  transition: color .5s !important;
+}
+.logout:hover{
+  color: rgb(255, 86, 1);
+}
+.nav-link{
+  padding-inline: 4px;
+}
+.badge{
+  top: -10%;
+}
+@media (min-width: 992px){
+  .badge{
+    right: 0;
+  }
+}

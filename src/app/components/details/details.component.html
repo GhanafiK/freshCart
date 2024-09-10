@@ -1,0 +1,39 @@
+@if(productDetails){
+  <section class="my-3 bg-main-light container rounded-4 product-details">
+    <h1 class="text-main text-center py-3">Product Details</h1>
+    <div class="row">
+      <div class="col-md-3">
+        <owl-carousel-o [options]="dynamicSlider">
+          @for (img of productDetails.images; track $index) {
+            <ng-template carouselSlide >
+              <div>
+                <img [src]="img" [alt]="productDetails.title" class="w-100">
+              </div>
+            </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+      <div class="col-md-9 px-3 card-text mb-3">
+          <h2 class="h5 text-main-muted fw-bolder"><span>Brand : {{productDetails.brand.name}}</span></h2>
+          <h3 class="h5 text-main fw-bold mb-3 pt-2 pb-3 title"><span class="card-text">{{productDetails.title}}</span> <span class="ps-2 ms-4 star card-text">{{productDetails.ratingsAverage}} <i class="bi bi-star-fill rating-color small"></i></span></h3>
+          
+          <h3 class="h6 text-main">category: <span class="card-text">{{productDetails.category.name}}</span></h3>
+          <p class="text-main my-2">Description: <span class="card-text">{{productDetails.description}}</span></p>
+          @if(productDetails.priceAfterDiscount){
+            <span class="text-main-muted">Was: <span class="priceBefore small fw-bold"> EGP {{productDetails.price}}</span>
+            <span class=" text-main d-block">Now: <span class="card-text fw-bolder">EGP {{productDetails.priceAfterDiscount}}</span></span>
+            <span class="d-block text-main saving">Saving: <span class="fw-bold card-text">EGP {{productDetails.price-productDetails.priceAfterDiscount}}</span> <span class="off"> {{((productDetails.price-productDetails.priceAfterDiscount)/productDetails.price)*100|intNum}}% off</span></span>
+          </span>
+          }@else{
+            <span class="text-main">Now: <span class="card-text fw-bolder">EGP {{productDetails.price}}</span></span>
+          }
+          <h4 class="inStock text-main-muted fw-bold"><i class="bi bi-bag-check"></i> Only {{productDetails.quantity}} left in stock</h4>
+
+          <span class="d-block cursor-pointer my-2 heart-icon"  (click)="addToWishList(productDetails.id)" [ngClass]="{
+            'text-danger':isProductinWish(productDetails.id)
+          }"><i class="fa-solid fa-heart fa-xl"></i></span>
+          <button class="btn-main w-100 py-1" (click)="addToCart(productDetails.id)">+ Add To Cart</button>
+        </div>
+      </div>
+  </section>
+}

@@ -1,0 +1,72 @@
+<section class="my-3">
+  @if(UserOrders.length>0){
+  <h1 class="h2 text-main my-3 fw-bolder text-center text">Your Orders</h1>
+  @for (order of UserOrders; track $index) {
+    <h2 class="h3 card-text fw-bolder shipment">shipment {{$index+1}}</h2>
+    <div class="row mb-3 shipmentOrder">
+      <div class="col-9 mx-auto col-md-12 col-lg-9 bg-main-light ship-product p-3 pb-0 rounded-4">
+        <h3 class="h5 card-text">#Order Id: {{order.id}}</h3>
+        @for (item of order.cartItems; track $index) {
+          <div class="row my-2 align-items-center card-text border rounded-3">
+            <div class="col-md-2 col-lg-1">
+              <div class="product-img">
+                <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+              </div>
+            </div>
+            <div class="col-md-10 col-lg-11">
+              <div class="row align-items-center my-2">
+                <div class="col-md-12 col-lg-4"><h4 class="h5">{{item.product.title}}</h4></div>
+                <div class="col-md-6 col-lg-4 d-flex align-items-center">
+                    <span class="items-and-price">{{item.count}} x EGP{{item.price}}</span>
+                    <span>Total:EGP{{item.count*item.price}}</span>
+                </div>
+                <div class="col-md-6 col-lg-4 progress my-2">
+                  <span class="text-success">In progress<i class="fa-solid fa-truck-fast"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="col-9 mx-auto col-md-12 col-lg-3">
+        <div class="mb-2 payment rounded-4 card-text fw-bolder">
+          <h3 class="py-4 border-bottom text-center">Order Summary</h3>
+          <div class="py-4 border-bottom ">
+            <div class="d-flex justify-content-between px-3 my-2">
+              <span>Subtotal</span>
+              <span>EGP {{order.totalOrderPrice}}</span>
+            </div>
+            <div class="d-flex justify-content-between px-3 my-2">
+              <span>Shipping</span>
+              <span class="shipping">free</span>
+            </div>
+            <div class="d-flex justify-content-between px-3 my-2">
+              <span>Patment Method</span>
+              <span class="text-warning">{{order.paymentMethodType}}</span>
+            </div>
+            <div class="d-flex justify-content-between px-3 my-2">
+              <span>Is Paid</span>
+              @if(order.isPaid==true){
+                <span class="text-success">{{order.isPaid}}</span>
+              }@else {
+                <span class="text-danger">{{order.isPaid}}</span>
+              }
+            </div>
+            
+          </div>
+          <div class="d-flex justify-content-between px-3 my-2 py-3">
+            <span>Total</span>
+            <span>EGP {{order.totalOrderPrice}}</span>
+          </div>
+        </div>
+        </div>
+      </div>
+  }
+  }@else {
+    <div class="text-center">
+      <img src="../../../assets/images/noOrder.png" class="emptyImg" alt="No order Found">
+      <h1 class="fw-bolder card-text"><span class="text-danger">No</span> Orders Found <span class="text-danger">!!!</span></h1>
+    </div>
+  }
+  
+</section>
